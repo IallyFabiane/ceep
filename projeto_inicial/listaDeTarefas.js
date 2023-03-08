@@ -11,6 +11,7 @@
         const conteudo = `<p class='content'>${value}</p>`;
         tarefa.innerHTML = conteudo;
         tarefa.appendChild(BotaoConclui());
+        tarefa.appendChild(BotaoDeleta());
         lista.appendChild(tarefa);
         input.value = '';
     }
@@ -30,9 +31,24 @@
 
 
     const concluirTarefa = (event) => {
-    const botaoConclui = event.target;
-    const tarefaCompleta = botaoConclui.parentElement;
-    tarefaCompleta.classList.toggle('done');
+        const botaoConclui = event.target;
+        const tarefaCompleta = botaoConclui.parentElement;
+        tarefaCompleta.classList.toggle('done');
+    }
+
+    const  BotaoDeleta = () => {
+      const botaoDeleta = document.createElement('button');
+      botaoDeleta.innerText= 'Deletar';
+      botaoDeleta.addEventListener('click', deletarTarefa);
+
+      return botaoDeleta;
+    }
+
+    const deletarTarefa = (event) => {
+        const botaodeleta = event.target;
+        const tarefaCompleta = botaodeleta.parentElement;
+        tarefaCompleta.remove();
+        return botaoDeleta;
     }
 
 })();
